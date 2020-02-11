@@ -99,6 +99,52 @@
 
 <br>
 
+<div>
+3. let vs const
+- const: 상수, 변하지 않는 값 => 선언과 동시에 할당 이루어짐
+- let: 재할당 가능 / const: 재할당 불가능
+
+const user = {name: 'hyemin'}; // 객체 선언시, const 사용
+user.name = 'jimin'
+console.log(user) // {name: 'jimin'} - 객체의 내용은 변경 가능
+</div>
+
+<br>
+
+<div>
+4. 매개변수 기본값 (Default Parameter value)
+- 함수를 호출할 때 매개변수의 개수만큼 인수를 전달하지 않으면, undefined가 나옴
+- 따라서 매개변수에 적절한 인수가 전달되었는지 함수 내부에서 확인
+
+function sum(x=0, y=0) {
+  return x + y;
+}
+console.log(sum(1)); // 1
+console.log(sum(1, 2)) // 3
+
+
+function foo(x, y = 0) {
+  console.log(arguments);
+}
+console.log(foo.length); // 1
+sum(1); // arguments {'0': 1}
+sum(1,2); // arguments {'0': 1, '1': 2}
+</div>
+
+<br>
+
+<div>
+5. rest 파라미터
+- 매개변수 이름 앞에 세개의 점 ...을 붙여서 정의한 매개변수
+- rest 파라미터는 함수에 전달된 인수들의 목록을 배열로 전달받음
+
+function bar(param1, param2, ...rest) {
+  console.log(param1); // 1
+  console.log(param2); // 2
+  console.log(rest); // [3, 4, 5]
+}
+bar(1, 2, 3, 4, 5);
+</div>
 
  
 </body>
