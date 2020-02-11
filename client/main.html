@@ -3,23 +3,102 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
-  {{> info}}
+<div>
+1. Arrow Function(화살표 함수)
+: (한번에 여러 작업을 처리) 작업을 할 때 필요한 runnable 객체(실행코드)를 편리하게 사용 => 익명함수를 편하게 사용
+ 
+* 일반 함수 vs 화살표 함수
+1-1. 일반 함수
+- this의 탐색 범위가 함수의 { } 안에서 찾음: 함수 내부의 this를 오버라이딩
+- ex) this는 template 변수를 가리킴
+- 생성자 내에서 생성자 함수 new를 호출하면 내부에서 this는 인스턴스 그 자체를 가리킴
+- bind, apply, call, new
+1-2. 화살표 함수
+- this 바인딩을 갖지 않음: 일반적인 인자/변수와 동일하게 취급
+- arrow function을 사용하여 변수 scope 유지, 변수들이 사용되는 위치와 상관없이 정의된 scope가 binding 됨
+- 해당 function을 정의한 영역의 this를 가져옴: 한 단계 더 위의 element를 가리킴
+- ex) this는 window 객체를 가리킴
+
+ 
+ * ES6 문법
+ function objFunction() {
+     console.log('Inside `objFunction`:', this.foo); // 13
+     return {
+         foo: 25,
+         bar: () => console.log('Inside `bar`:', this.foo), // 13
+     };
+ }
+ objFunction.call({ foo: 13 }).bar();
+ 
+ * ES5 문법
+ function objFunction() {
+     var _this = this; // ES6에서처럼 this를 변수처럼 사용하려면 새로운 변수를 만들어야 함
+ 
+     console.log('Inside `objFunction`:', this.foo);
+     return {
+         foo: 25,
+         bar: function bar() {
+             return console.log('Inside `bar`:', _this.foo);
+         }
+     };
+ }
+ objFunction.call({ foo: 13 }).bar();
+
+ 
+ * 매개변수 지정 방법
+ () => {...} // 매개변수가 없을 경우
+ x => {...} // 매개변수가 한 개인 경우, 소괄호 생략
+ (x, y) => {...} // 매개변수가 여러 개인 경우
+ 
+ * 함수 몸체 지정 방법
+ x => { return x * x } // single line block
+ x => x * x // 함수 몸체가 한줄 구문의 경우, 중괄호를 생략할 수 있으며 암묵적으로 return 됨
+ 
+ () => { return {a : 1}; }
+ () => ({a : 1}) // 객체 반환시에도 동일, 단 소괄호를 사용한다
+ 
+ () => { // multi line block
+     const x = 10;
+     return x * x;
+ }
+ </div>
+
+<br>
+
+ <div>
+ 2. for-in vs for-of
+ - for-in: 객체의 '속성'을 순회하기 위한 구문
+ - for-of: 객체의 '요소'를 순회학 위한 구문
+ 
+ const array1 = [1, 2, 3, 4, 5];
+ for(let i in array1) {
+     console.log(i); // 0 1 2 3 4 (인덱스)
+ }
+ for(let j of array1) {
+     console.log(j); // 1 2 3 4 5 (각 요소)
+ }
+ 
+ const array2 = {
+     color: 'red',
+     weight: 40,
+     height: 160,
+     [Symbol.iterator]: function* () { // 객체의 경우, 반복가능하도록 만들어야 함
+         yield this.color;
+         yield this.weight;
+         yield this.height;
+     }
+ }
+ for(let i in array2) {
+     console.log(i); // color weight height
+ }
+ for(let j of array2) {
+     console.log(j); // red 40 160
+ } 
+</div>
+
+<br>
+
+
+ 
 </body>
-
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
-
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
-</template>
