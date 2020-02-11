@@ -146,5 +146,42 @@ function bar(param1, param2, ...rest) {
 bar(1, 2, 3, 4, 5);
 </div>
 
+<br>
+
+<div>
+6-1. Array.prototype.map()
+- map() method는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열 반환
+
+const array1 = [ 1, 4, 9, 16 ];
+const map1 = array1.map( x => x * 2 );
+console.log(map1); // [ 2, 8, 18, 32 ]
+
+6-2. Array.prototype.pop()
+- pop() method는 배열에서 마지막 요소를 제거하고 그 요소를 반환
+
+const array1 = [ 'a', 'b', 'c', 'd' ];
+console.log(array1.pop()); // 'd'
+console.log(array1); // [ 'a', 'b', 'c' ]
+
+6-3. Array.prototype.slice()
+- slice() method는 어떤 배열의 begin부터 end에 대한 새로운 배열을 객체로 반환
+
+const array1 = [ 'a', 'b', 'c', 'd', 'e' ];
+console.log(array1.slice(2)); //[ 'c', 'd', 'e' ]
+console.log(array1.slice(2, 4)); // [ 'c', 'd' ] 
+
+6-4. Array.prototype.some()
+- some() method는 배열 안의 어떤 요소라도 주어진 판별 함수를 통과하는지 테스트
+
+const array1 = [1, 2, 3, 4, 5];
+
+const even = (element) => element % 2 === 0;
+console.log(array1.some(even)); // true
+
+6-5. Array.prototype.splice()
+
+
+</div>
+
  
 </body>
