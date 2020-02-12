@@ -173,7 +173,7 @@ var student = {
 }
 console.log(student.__proto__ === Object.prototype);
 console.log(Object.prototype.constructor === Object);
-console.log(Object.__proto__ === function.prototype);
+console.log(Object.__proto__ === Function.prototype);
 ---------------------------------------------------------------------------
 function Person(name, gender) {
     this.name = name;
@@ -322,6 +322,33 @@ async function logName() {
 }
 </div>
 
+<br>
+
+<div>
+10. 객체(Object)
+- 자바스크립트는 객체(object) 기반의 스크립트 언어이며, 자바스크림트를 이루고 있는 거의 '모든 것'이 객체
+- 자바스크립트 객체는 키(key)와 값(value)로 구성된 property들의 집합
+- new 연산자를 사용하지 않고 인스턴스를 생성할 수 있음 (초기 생성 시)
+
+var person() { // 기본적으로 new를 사용하지 않음
+    name: 'hyemin',
+    gender: 'female'
+}
+---------------------------------------------------------------------------
+var person = new Object(); // 빈 객체의 생성
+
+person.name = 'hyemin'; // property 추가
+person.gender = 'female'; 
+---------------------------------------------------------------------------
+* 생성자 함수: 동일한 객체 여러 개를 간편하게 생성할 수 있음
+function Person(name, gender) { // 생성자 함수(첫 글자 대문자)
+    this.name = name;
+    this.gender = gender;
+}
+
+var person1 = new Person('park', 'male'); // 인스턴스 생성
+var person2 = new Person('hyemin', 'female'); 
+</div>
 
  
 </body>
