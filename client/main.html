@@ -301,6 +301,26 @@ getData().then(function(tableData) {
 
 <br>
 
+<div>
+9. async와 await
+- 자바스크립트 비동기 처리에 사용되는 갹채
+- 기존의 비동기 처리 방식인 callback 함수와 promise의 단점을 보완
+
+async function 함수명() {
+    await 비동기_처리_메서드_명();
+}
+
+async function logName() {
+    try {
+        var user = await fetchUser('domain.com/users/1');
+        if(user.id === 1) {
+            console.log(user.name);
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
+</div>
 
 
  
