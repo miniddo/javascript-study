@@ -274,5 +274,34 @@ console.log('hello again');
 - 문제점: 원하는 과정을 모두 비동기로 처리해야할 때, 콜백 안에 콜백을 계속 무는 형식으로 코딩하게 됨 => Promise, Async 사용
 </div>
 
+<br>
+
+<div>
+8. Promise
+- 자바스크립트 비동기 처리에 사용되는 객체
+- new Promise, resolve, then()
+
+function getData(callback) {
+    return new Promise(function(resolve, reject) { // pending(대기) 
+        $.get('url 주소/product/1', funtion (response) { 
+            if(response) {
+                resolve(response); // fulfilled(이행)
+            }
+            reject(new Error("request is failed")); // rejected(실패)
+        });
+    });
+}
+getData().then(function(tableData) {
+    console.log(tableData);
+    throw new Error("Error in then()");
+}).catch(function(err) {
+    console.log(err);
+});
+</div>
+
+<br>
+
+
+
  
 </body>
