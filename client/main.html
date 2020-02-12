@@ -149,6 +149,46 @@ bar(1, 2, 3, 4, 5);
 <br>
 
 <div>
+6. prototype(프로토타입)
+- java, c++: class 기반 객체지향 프로그래밍 언어 => 객체 생성 이전에 class를 정의하고 이를 통해 객체(인스턴스)를 생성
+- javascript: prototype 기반 객체지향 프로그래밍 언어 => class 없이 객체 생성
+: javascript의 모든 객체는 자신의 부모 역할을 담당하는 객체와 연결되어 있음, 이러한 부모 객체를 prototype(프로토타입) 객체 또는 prototype(프로토타입)
+: 부모 객체의 함수들을 특별한 정의 없이 바로 사용할 수 있음
+
+
+* [[prototype]] vs prototype 프로퍼티
+- [[prototype]]: 객체의 입장에서 자신의 부모 역할을 하는 프로토타입객체를 가리키며, 함수 객체의 경우 Function.prototype
+- prototype 프로퍼티: 함수 객체가 생성자로 나올 때 이 함수를 통해 생성될 객체의 부모역할을 하는 개체를 가리킴
+
+function Person(name) {
+    this.name = name;
+}
+var foo = new Person('park');
+console.log(Person.__proto__ === Function.prototype);
+console.log(foo.__proto__ === Person.prototype); 
+---------------------------------------------------------------------------
+var student = {
+    name: 'hyemin',
+    age: 25
+}
+console.log(student.__proto__ === Object.prototype);
+console.log(Object.prototype.constructor === Object);
+console.log(Object.__proto__ === function.prototype);
+---------------------------------------------------------------------------
+
+
+* constructor 프로퍼티
+- 객체의 입장에서 자신을 생성한 객체를 가리킴
+
+function Person(name) {
+    this.name = name;
+}
+var foo = new Person('Lee'); // foo는 Person() 생성자 함수에 의해 생성된 객체
+console.log(Person.prototype.constructor === Person); // Person() 생성자 함수에 의해 생성된 객체를 생성한 객체는 Person() 생성자 함수
+console.log(foo.constructor === Person); // foo 객체를 생성한 객체는 Person() 생성자 함수
+console.log(Person.constructor === Function); // Person() 생성자 함수를 생성한 객체는 Function() 생성자 함수
+
+
 6-1. Array.prototype.map()
 - map() method는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열 반환
 
