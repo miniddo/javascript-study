@@ -439,5 +439,101 @@ for(let i of index) { // let으로 변경하면 바로 사용 가능함
 
 </div>
 
+<br>
+
+<div>
+13. var, let, const
+
+13-1. 변수 선언 방식
+- var: 변수 재선언 가능, 변수 재할당 가능
+
+var name = '혜민'
+console.log(name); // 혜민
+
+var name = '유진'
+console.log(name); // 유진
+
+- let: 변수 재선언 불가능, 변수 재할당 가능
+
+let name = '혜민'
+console.log(name); // 혜민
+
+let name = '유진' // 변수 재선언
+console.log(name); // Uncaught SyntaxError: Identifier 'name' has already been declared
+
+name = '민현' // 변수 재할당
+console.log(name); // 민현
+
+- const: 변수 재선언 불가능, 변수 재할당 불가능
+
+const name = '혜민'
+console.log(name); // 혜민
+
+const name = '유진' // 변수 재선언
+console.log(name); // Uncaught SyntaxError: Identifier 'name' has already been declared
+
+name = '민현' // 변수 재할당
+console.log(name); // Uncaught TypeError: Assignment to constant variable
+
+13-2. 변수의 유효범위
+- var: function scope
+- let, const: block scope;
+
+-------- var ---------------
+var foo = "This is String.";
+if(typeof foo === 'string'){
+	var result = true;
+} else {
+  var result = false;
+}
+
+console.log(result); // true
+
+-------- let ---------------
+var foo = "This is String.";
+if(typeof foo === 'string'){
+    let result = true;
+} else {
+    let result = false;
+}
+
+console.log(result); // result is not defined
+
+-------- let ---------------
+var foo = "This is String.";
+let resut = '안녕'
+if(typeof foo === 'string'){
+    result = true;
+} else {
+    result = false;
+}
+
+console.log(result); // true
+
+-------- const--------------
+var foo = "This is String.";
+if(typeof foo === 'string'){
+    const result = true;
+} else {
+    const result = false;
+}
+
+console.log(result); // result is not defined
+
+-------- const--------------
+var foo = "This is String.";
+const resut = '안녕'
+if(typeof foo === 'string'){
+    result = true;
+} else {
+    result = false;
+}
+
+console.log(result); // true
+
+* let과 const의 차이: immutable 여부
+
+</div>
+
  
 </body>
