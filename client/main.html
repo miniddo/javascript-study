@@ -535,5 +535,81 @@ console.log(result); // true
 
 </div>
 
- 
+<br>
+
+<div>
+14. sort()
+- 오름차순
+arr.sort(function(a, b)) { return a-b; }); / arr.sort((a,b) => a-b)
+- 내림차순
+arr.sort(function(a, b)) { return b-a; }); / arr.sort((a,b) => b-a)
+
+
+let priority = [
+    {
+        name: '혜민',
+        age: 25,
+        color: [
+            {
+                color_name: 'red',
+                value: 10
+            },
+            {
+                color_name: 'blue',
+                value: 20
+            },
+            
+            
+        ]
+    },
+    {
+        name: '유진',
+        age: 26,
+        color: [
+            {
+                color_name: 'gray',
+                value: 13
+            },
+            {
+                color_name: 'pink',
+                value: 19
+            },
+            
+            
+        ]
+    },
+    {
+        name: '민현',
+        age: 26,
+        color: [
+            {
+                color_name: 'yellow',
+                value: 26
+            },
+            {
+                color_name: 'black',
+                value: 12
+            },
+            
+            
+        ]
+    }
+];
+
+
+priority.sort((a, b) => {
+
+    let p1color = a.color.sort((x, y) => {
+        return x.value > y.value ? -1 : 1     // 오름차순
+    });
+
+    let p2color = b.color.sort((x, y) => {
+        return x.value > y.value ? -1 : 1     // 오름차순
+    });
+    
+    return p1color[0].value > p2color[0].value ? -1 : 1     // 오름차순
+})
+
+</div>
+
 </body>
