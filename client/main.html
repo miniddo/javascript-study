@@ -353,7 +353,7 @@ var person2 = new Person('hyemin', 'female');
 <br>
 
 <div>
-11. this / call, bind, apply / closure
+11. this / call, bind, apply
 
 11-1. call, apply ?
 - call, apply: 함수 호출
@@ -407,6 +407,35 @@ Array.prototype.slice.call(func(1, 2, 3)); // [1, 2, 3]
 let real = Array.prototype.slice.call(func(1, 2, 3));
 real.push(4); // [1, 2, 3, 4]
 
+</div>
+
+<br>
+
+<div>
+12. closure
+- 함수와 그 함수가 선언됐을 때의 렉시컬 환경(Lexical enviornment)과의 조합
+
+let index = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+for(var i of index) { // 3. index가 다 돌고나서야 console.log가 호출됨
+    setTimeout(function() { // 2. i 값은 없음
+        console.log(i); // 1. function() 안에서의 i 값을 찾음 // 10이 10번 호출
+    }, 1000)
+}
+
+for(var i of index) {
+    setTimeout((function() {
+        console.log(i); // '즉시 실행 함수'를 통해 해결할 수 있음
+    })(), 1000)
+}
+
+* 즉시 실행 함수? (function() {...})()
+ 
+for(let i of index) { // let으로 변경하면 바로 사용 가능함
+    setTimeout(function() {
+        console.log(i);
+    }, 1000)
+}
 
 </div>
 
